@@ -1,0 +1,87 @@
+//
+//  weibo.pch
+//  我的微博
+//
+//  Created by qianfeng on 16/1/7.
+//  Copyright (c) 2016年 kelvin. All rights reserved.
+//
+
+#ifndef _____weibo_pch
+#define _____weibo_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#ifdef DEBUG
+    #define GPLog(...) NSLog(__VA_ARGS__)
+#else
+    #define GPLog(...)
+#endif
+
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+
+    #import "NSObject+KVC.h"
+    #import "UIView+Frame.h"
+    #import "UIImage+Resize.h"
+    #import "UIColor+Extension.h"
+    #import "UIBarButtonItem+Extension.h"
+    #import "NSString+Extension.h"
+    #import "NSAttributedString+Extension.h"
+    #import "NSDictionary+HYBUnicodeReadable.h" // 解决打印中文不显示
+
+    #define SCREEN_FRAME ([UIScreen mainScreen].applicationFrame)
+    #define SCREEN_WIDTH ([UIScreen mainScreen].bounds.size.width)
+    #define SCREEN_HEIGHT ([UIScreen mainScreen].bounds.size.height)
+
+    #define GPColor(r, g, b)    [UIColor colorWithRed:(r)/255.0 green:(b)/255.0 blue:(b)/255.0 alpha:1.0]
+    #define GPRandomColor   GPColor(arc4random()%256, arc4random()%256, arc4random()%256)
+
+    #define iOS7 [[[UIDevice currentDevice].systemVersion doubleValue] >= 7.0]
+    #define FourInch [[UIScreen mainScreen].bounds.size.height == 568.8]
+
+// 应用信息
+#define GPAppKey        @"3664526010"
+#define GPAppSecret     @"d51bae4a5d3669c6f86fd847eabc9501"
+#define GPRedirectURL   @"http://www.360.com"
+
+// 全局背景色
+#define GPGlobalBackgroundColor GPColor(211, 211, 211)
+
+// cell的计算参数
+// cell的内边距
+#define GPStatusCellInset 10
+// cell之间的间距
+#define GPStatusCellMargin  10
+
+// 原创微博昵称的字体
+#define GPStatusOriginalNameFont [UIFont systemFontOfSize:14]
+// 原创微博时间的字体
+#define GPStatusOriginalTimeFont [UIFont systemFontOfSize:11]
+// 原创微博来源的字体
+#define GPStatusOriginalSourceFont GPStatusOriginalTimeFont
+// 原创微博正文的字体
+#define GPStatusOriginalTextFont [UIFont systemFontOfSize:15]
+// 转发微博昵称的字体
+#define GPStatusRetweetedNameFont GPStatusOriginalNameFont
+// 转发微博正文的字体
+#define GPStatusRetweetedTextFont GPStatusOriginalTextFont
+// 转发微博正文字体
+#define GPStatusHighTextColor GPColor(232, 118, 91)
+
+//表情
+#define GPEmotionMaxRows    3
+#define GPEmotionMaxCols    7
+#define GPEmotionMaxCountPerPage    (GPEmotionMaxRows * GPEmotionMaxCols - 1)
+// 表情选中的通知
+#define GPEmotionDidSelectedNotification @"GPEmotionDidSelectedNotification"
+// 通知里面表情选中用的key
+#define GPSelectedEmotion @"GPSelectedEmotion"
+// 点击删除按钮的通知
+#define GPEmotionDidDeletedNotification @"GPEmotionDidDeletedNotification"
+// link选中的通知
+#define GPLinkDidSelectedNotification @"GPLinkDidSelectedNotification"
+
+#define GPLinkText  @"link"
+
+#endif
